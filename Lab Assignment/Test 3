@@ -1,0 +1,61 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+
+    int n,m,flag=0;
+    cout<<"Enter number of elements\n";
+    cin>>n;
+    m=sqrt(n);
+    int A[300];
+    cout<<"Enter elements\n";
+    for(int i=0;i<n;i++)
+        cin>>A[i];
+
+    int key,count=0;
+    cout<<"Enter key to be found\n";
+    cin>>key;
+    int k=m;
+    if(key>A[0])
+    {
+        count++;
+        while(key>A[k])
+        {
+            count++;
+            k+=m;
+        }
+        if(key==A[k])
+        {
+            count++;
+            cout<<"key found\n";
+            flag=1;
+            cout<<"comparisons are : "<<count;
+        }
+        else
+        {
+            for(int i=k-m;i<k+m;i++)
+            {
+
+              if(key==A[i])
+            {
+                cout<<"Key found\n";
+                flag=1;
+                cout<<"comparisons are : "<<count;
+                break;
+            }
+            }
+        }
+    }
+    else if(key==A[0])
+    {
+          cout<<"Key found\n";
+          cout<<"Comparisons are : 1";
+          flag=1;
+    }
+
+
+    if(flag==0)
+        cout<<"key is not present\n";
+        cout<<"comparisons are : "<<count;
+}
